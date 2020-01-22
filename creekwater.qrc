@@ -1,0 +1,46 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>CreekWater/uisource/images/png1.png</file>
+        <file>CreekWater/uisource/images/png2.png</file>
+        <file>CreekWater/uisource/images/png3.png</file>
+        <file>CreekWater/uisource/images/png4.png</file>
+        <file>CreekWater/uisource/images/png5.png</file>
+        <file>CreekWater/uisource/images/png6.png</file>
+        <file>CreekWater/uisource/images/png7.png</file>
+        <file>CreekWater/uisource/images/png8.png</file>
+        <file>CreekWater/uisource/images/png9.png</file>
+        <file>CreekWater/uisource/images/png10.png</file>
+        <file>CreekWater/uisource/images/png11.png</file>
+        <file>CreekWater/uisource/images/0.png</file>
+        <file>CreekWater/uisource/images/1.png</file>
+        <file>CreekWater/uisource/images/2.png</file>
+        <file>CreekWater/uisource/images/3.png</file>
+        <file>CreekWater/uisource/images/4.png</file>
+        <file>CreekWater/uisource/images/5.png</file>
+        <file>CreekWater/uisource/images/6.png</file>
+        <file>CreekWater/uisource/images/7.png</file>
+        <file>CreekWater/uisource/images/8.png</file>
+        <file>CreekWater/uisource/images/9.png</file>
+        <file>CreekWater/uisource/images/bg.png</file>
+        <file>CreekWater/uisource/images/dot.png</file>
+        <file>CreekWater/uisource/images/hid.png</file>
+        <file>CreekWater/uisource/images/serial.png</file>
+        <file>CreekWater/uisource/images/wifi.png</file>
+        <file>CreekWater/uisource/images/checkbox_checked.png</file>
+        <file>CreekWater/uisource/images/checkbox_checked_disable.png</file>
+        <file>CreekWater/uisource/images/checkbox_parcial.png</file>
+        <file>CreekWater/uisource/images/checkbox_parcial_disable.png</file>
+        <file>CreekWater/uisource/images/checkbox_unchecked.png</file>
+        <file>CreekWater/uisource/images/checkbox_unchecked_disable.png</file>
+        <file>CreekWater/uisource/images/radiobutton_checked.png</file>
+        <file>CreekWater/uisource/images/radiobutton_checked_disable.png</file>
+        <file>CreekWater/uisource/images/radiobutton_unchecked.png</file>
+        <file>CreekWater/uisource/images/radiobutton_unchecked_disable.png</file>
+    </qresource>
+    <qresource prefix="/ttf">
+        <file>CreekWater/uisource/ttf/fontawesome-webfont.ttf</file>
+    </qresource>
+    <qresource prefix="/css">
+        <file>CreekWater/uisource/css/myframeset.css</file>
+    </qresource>
+</RCC>

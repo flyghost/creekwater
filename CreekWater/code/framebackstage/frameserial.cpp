@@ -42,8 +42,8 @@ void FrameSerial::initForm()
 
     //发送数据
     connect(ui->btnSend, SIGNAL(clicked()), this, SLOT(sendData()));
-    connect(ui->cboxSend, SIGNAL(returnPressed()),ui->btnSend,SIGNAL(clicked()),Qt::UniqueConnection);  //回车发送
-    ui->btnSend->setShortcut(Qt::Key_Return);//将字母区回车键与登录按钮绑定在一起
+//    connect(ui->cboxSend, SIGNAL(returnPressed()),ui->btnSend,SIGNAL(clicked()),Qt::UniqueConnection);  //回车发送
+    ui->btnSend->setShortcut(Qt::Key_Return);//将字母区回车键与发送按钮绑定在一起
     connect(ui->btnOpen, SIGNAL(clicked()), this, SLOT(on_btnOpen_clicked()));//打开串口按钮
     connect(ui->btnSendCount, SIGNAL(clicked()), this, SLOT(on_btnSendCount_clicked()));//发送清零
     connect(ui->btnReceiveCount, SIGNAL(clicked()), this, SLOT(on_btnReceiveCount_clicked()));//接收清零

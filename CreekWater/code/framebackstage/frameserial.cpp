@@ -54,15 +54,12 @@ void FrameSerial::initForm()
 
 //    if(m_timer == nullptr)
 //    {
-//         m_timer = new QTimer;
+//         m_timer = new QTimer();
 //    }
-//    m_timer = new QTimer(this);
-//    //设置定时器是否为单次触发。默认为 false 多次触发
-//    m_timer->setSingleShot(false);
-//    //启动或重启定时器, 并设置定时器时间：毫秒
-//    m_timer->start(500);
-//    //定时器触发信号槽
-//    connect(m_timer, SIGNAL(timeout()), this, SLOT(m_timer_timeout()));
+   serial_update_timer = new QTimer(this);
+   serial_update_timer->setSingleShot(false);//设置定时器是否为单次触发。默认为 false 多次触发
+   serial_update_timer->start(500);//启动或重启定时器, 并设置定时器时间：毫秒
+   connect(serial_update_timer, SIGNAL(timeout()), this, SLOT(comUpdate())); //定时器触发信号槽
 
 
 }
@@ -77,33 +74,19 @@ void FrameSerial::initConfig()
     * 串口号配置
     */
     //添加com1~com20
-    QStringList comList;
-    /****
-    for (int i = 0; i <= 20; i++) {
-//        comList << QString("COM%1").arg(i);
-        comList << QString("/dev/ttyUSB%1").arg(i);
-    }*****/
-    //添加到下拉菜单
-//    comList << "ttyUSB0" << "ttyUSB1" << "ttyS0" << "ttyS1" << "ttyS2" << "ttyS3" << "ttyS4";
-//    ui->cboxPortName->addItems(comList);
+    //QStringList comList;
 
-    onPortAddedOrRemoved();
-    enumerator = new QextSerialEnumerator();
-    enumerator->setUpNotifications();
+    //获取可用串口，添加到下拉菜单
+    comUpdate();
+    // 以下为qextserialenumerator提供，unix下不支持
+    // enumerator = new QextSerialEnumerator();
+    // enumerator->setUpNotifications();
 
-    connect(enumerator, SIGNAL(deviceDiscovered(QextPortInfo)),this, SLOT(onPortAddedOrRemoved()));  //发现有串口
-    connect(enumerator, SIGNAL(deviceRemoved(QextPortInfo)), this, SLOT(onPortAddedOrRemoved()));     //发现没有串口了
-
-//    foreach (QextPortInfo info, QextSerialEnumerator::getPorts())
-//    {
-//        if(info.portName.contains("USB",Qt::CaseSensitive))
-//            ui->cboxPortName->addItem(info.portName);
-//    }
-    //make sure user can input their own port name!
-//    ui->cboxPortName->setEditable(true);
+    // connect(enumerator, SIGNAL(deviceDiscovered(QextPortInfo)),this, SLOT(comUpdate()));  //发现有串口
+    // connect(enumerator, SIGNAL(deviceRemoved(QextPortInfo)), this, SLOT(comUpdate()));     //发现没有串口了
 
     QStringList sendEndFlagList;
-    sendEndFlagList << "\\CR\\LF" << "\\CR" << "\\LF";
+    sendEndFlagList << "\\CR\\LF" << "\\CR" << "\\LF" << "NONE";
     ui->cboxSendEndFlag->addItems(sendEndFlagList);
 
     /*
@@ -111,7 +94,6 @@ void FrameSerial::initConfig()
     */
     //添加波特率
     QStringList baudList;
-//    baudList << "9600" << "14400" << "19200" << "38400" << "56000" << "57600" << "76800" << "115200" << "128000" << "256000";
     baudList <<"115200" << "128000" << "256000";
     //添加到下拉菜单
     ui->cboxBaudRate->addItems(baudList);
@@ -121,9 +103,7 @@ void FrameSerial::initConfig()
     */
     //添加数据位
     QStringList dataBitsList;
-//	dataBitsList << "5" << "6" << "7" << "8";
     dataBitsList << "8" << "6" << "7" << "5";
-    //添加到下拉菜单
     ui->cboxDataBit->addItems(dataBitsList);
 
     /*
@@ -180,11 +160,9 @@ void FrameSerial::append(quint8 type, QString msg)
     if (type == 0) {
         str = ">> 串口发送 : ";
         ui->txtMain->setTextColor(QColor("green"));
-//        ui->txtMain->append(QString("时间[%1] %2 %3").arg(TIMEMS).arg(str).arg(msg));
     } else if (type == 1) {
         str = "<< 串口接收 : ";
         ui->txtMain->setTextColor(QColor("dodgerblue"));
-//        ui->txtMain->append(msg);
     }
 
     ui->txtMain->append(QString("时间[%1] %2 %3").arg(TIMEMS).arg(str).arg(msg));
@@ -228,12 +206,20 @@ void FrameSerial::readData()
 
 void FrameSerial::sendData()
 {
-    QString str = ui->cboxSend->currentText();
+    QString str;
+    if(ui->cboxSendEndFlag->currentText() == "NONE")
+    {
+        str = ui->cboxSend->currentText();
+    }
+    else
+    {
+        str = ui->cboxSend->currentText() + ui->cboxSendEndFlag->currentText();// 发送添加换行符
+    }
 
-//    if (str.isEmpty()) {
-//        ui->cboxSend->setFocus();
-//        return;
-//    }
+    if (str.isEmpty()) {
+        ui->cboxSend->setFocus();
+        return;
+    }
 
     sendData(str);
 
@@ -246,8 +232,6 @@ void FrameSerial::sendData(QString data)
     if (com == nullptr || !com->isOpen()) {
         return;
     }
-
-    data += ui->cboxSendEndFlag->currentText(); // 发送添加换行符
 
     QByteArray buffer;
 
@@ -267,12 +251,14 @@ void FrameSerial::sendData(QString data)
 
 void FrameSerial::on_btnOpen_clicked()
 {
-    if (ui->btnOpen->text() == "打开串口") {
+    if (ui->btnOpen->text() == "打开串口")
+    {
 //        com = new QextSerialPort(ui->cboxPortName->currentText(), QextSerialPort::Polling);
         com = new QextSerialPort(ui->cboxPortName->currentText(), QextSerialPort::EventDriven);
         comOk = com->open(QIODevice::ReadWrite);
 
-        if (comOk) {
+        if (comOk)
+        {
             //清空缓冲区
             com->flush();
             //设置波特率
@@ -290,13 +276,17 @@ void FrameSerial::on_btnOpen_clicked()
 
             changeEnable(true);
             ui->btnOpen->setText("关闭串口");
+            com_name = ui->cboxPortName->currentText();
         }
-    } else {
+    }
+    else
+    {
         com->close();
         changeEnable(false);
         ui->btnOpen->setText("打开串口");
         on_btnClear_clicked();
         comOk = false;
+        com_name = nullptr;
     }
 }
 
@@ -391,45 +381,52 @@ void FrameSerial::on_btnClear_clicked()
     currentCount = 0;
 }
 
-
-void FrameSerial::m_timer_timeout()
+void FrameSerial::comUpdate()              //刷新串口号
 {
-    static int i;
-//    foreach (QextPortInfo info, QextSerialEnumerator::getPorts())
-//    {
-//        if(info.portName.contains("USB",Qt::CaseSensitive))
-//            ui->cboxPortName->addItem(info.portName);
-//    }
-    qDebug()<< "timer" << i++ <<'\n';
-}
-
-void FrameSerial::onPortAddedOrRemoved()              //刷新串口号
-{
-    QString current = ui->cboxPortName->currentText();
     ui->cboxPortName->blockSignals(true);        //阻塞信号
-    ui->cboxPortName->clear();
-
+    com_list.clear();
     foreach (QextPortInfo info, QextSerialEnumerator::getPorts())
     {
         if(!info.portName.contains("USB",Qt::CaseSensitive))
         {
             continue;
         }
-        QString friendname = info.friendName;
-        int end=friendname.lastIndexOf(" ");
-        if(end!=-1)
-        {
-            ui->cboxPortName->addItem(QString("%1:%2").arg(info.portName).arg(info.friendName.left(end)),info.portName);
-        }
         else
         {
-            ui->cboxPortName->addItem(QString("%1:%2").arg(info.portName).arg(info.friendName),info.portName);
+            com_list.append(info.portName);
         }
     }
 
-    ui->cboxPortName->setCurrentIndex(ui->cboxPortName->findText(current));
-    if(ui->cboxPortName->currentIndex()==-1)
-        ui->cboxPortName->setCurrentIndex(0);
+    // 串口打开但是未检测到该串口
+    if(comOk && !com_list.contains(com_name))
+    {
+        on_btnOpen_clicked(); // 关闭串口
+    }
+
+    // 串口未打开，更新串口
+    if(!comOk)
+    {
+        ui->cboxPortName->clear();
+        ui->cboxPortName->addItems(com_list);
+    }
+
     ui->cboxPortName->blockSignals(false);       //关闭阻塞
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -2343,7 +2343,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QWidget" name="widgetLeftTest" native="true">
+        <widget class="QWidget" name="backstageLeftWidget" native="true">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -2367,7 +2367,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QToolButton" name="tbtnTest1">
+           <widget class="QToolButton" name="backstageLeftBtnSerial">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -2380,7 +2380,20 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="tbtnTest2">
+           <widget class="QToolButton" name="backstageLeftBtnTeminal">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Terminal</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="backstageLeftBtnTcpServer">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -2393,7 +2406,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="tbtnTest3">
+           <widget class="QToolButton" name="backstageLeftBtnTcpClient">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -2406,7 +2419,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="tbtnTest4">
+           <widget class="QToolButton" name="backstageLeftBtnUdp">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -2419,7 +2432,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="tbtnTest5">
+           <widget class="QToolButton" name="backstageLeftBtnUsbhid">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -2432,7 +2445,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="tbtnTest6">
+           <widget class="QToolButton" name="backstageLeftBtnOther">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -2461,7 +2474,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QStackedWidget" name="testStackedWidget">
+        <widget class="QStackedWidget" name="backstageStackedWidget">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -2469,7 +2482,7 @@
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="serialPage">
           <layout class="QHBoxLayout" name="horizontalLayout_6">

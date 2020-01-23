@@ -1,9 +1,13 @@
 HEADERS += \
-        $$PWD/frameserial.h
+        $$PWD/framebackstage.h \
+        $$PWD/frameserial.h \
+#        $$PWD/frameterminal.h
 
            
 SOURCES +=  \
-        $$PWD/frameserial.cpp
+        $$PWD/framebackstage.cpp \
+        $$PWD/frameserial.cpp \
+#        $$PWD/frameterminal.cpp
 
 
 

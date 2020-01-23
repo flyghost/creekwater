@@ -4,7 +4,7 @@
 #include "frameconnect.h"
 #include "frameserial.h"
 #include "frameplanesetting.h"
-
+#include "framebackstage.h"
 
 
 #include "ui_framemain.h"
@@ -32,8 +32,8 @@ FrameTop::FrameTop(QWidget *parent) :
     FrameConnect *connect;
     connect = new FrameConnect(ui,bridge);
 
-    FrameSerial *serial;
-    serial = new FrameSerial(ui);
+    FrameBackstage *backstage;
+    backstage = new FrameBackstage(ui);
 
     FramePlaneSetting *planesetting;
     planesetting = new FramePlaneSetting(ui);

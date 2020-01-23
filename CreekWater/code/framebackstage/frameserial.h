@@ -38,8 +38,11 @@ private:
     int sendCount;              //发送数据计数
     int receiveCount;           //接收数据计数
     bool isShow;                //是否显示数据
-    QTimer *m_timer;    //com find timer
-    QextSerialEnumerator *enumerator;    //在线串口统计类
+    QTimer *serial_update_timer;// 定时检测插入的串口
+    QString com_name;           // 打开的串口名字
+    QStringList com_list;        // 当前检测到的所有串口
+    
+    // QextSerialEnumerator *enumerator;    //在线串口统计类
 
 //    QextSerialEnumerator *enumerator;    //在线串口统计类
 
@@ -57,10 +60,7 @@ private slots:
 
     void changeEnable(bool b);      //改变状态
     void append(quint8 type, QString msg);
-    void m_timer_timeout();
-    void onPortAddedOrRemoved();        //刷新串口号
-
-//    void onPortAddedOrRemoved();        //刷新串口号
+    void comUpdate();        //刷新串口号
 
 private slots:
     void on_btnOpen_clicked();

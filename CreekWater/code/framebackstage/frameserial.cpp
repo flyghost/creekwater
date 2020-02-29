@@ -9,6 +9,8 @@ FrameSerial::FrameSerial(Ui_FrameMain *m_ui)
     this->initForm();
     this->initConfig();
 
+    serialdownload = new SerialDownload(com,ui);
+
 
 //    package = new Package_ANO_422;
 

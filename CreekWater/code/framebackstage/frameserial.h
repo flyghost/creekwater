@@ -7,6 +7,7 @@
 #include <QTimer>
 #include "qextserialport.h"
 #include "qextserialenumerator.h"
+#include "serialdownload.h"
 //#include <QThread>
 
 class QextSerialPort;
@@ -29,6 +30,7 @@ public:
 
 private:
     Ui_FrameMain *ui;
+    SerialDownload *serialdownload;
 
     bool comOk;                 //串口是否打开
     QextSerialPort *com;        //串口通信对象

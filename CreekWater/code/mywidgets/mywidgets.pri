@@ -1,5 +1,6 @@
 HEADERS += \
 #	$$PWD/CustomButton.h \
+    $$PWD/buttonedit.h \
 	$$PWD/gaugeplane.h \
 	$$PWD/lightbutton.h \
 	$$PWD/progressbarcolor.h \
@@ -12,6 +13,7 @@ HEADERS += \
            
 SOURCES +=  \
 #	$$PWD/CustomButton.cpp \
+    $$PWD/buttonedit.cpp \
 	$$PWD/gaugeplane.cpp \
 	$$PWD/lightbutton.cpp \
 	$$PWD/progressbarcolor.cpp \

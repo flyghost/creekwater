@@ -1,12 +1,7 @@
 ﻿#ifndef PROGRESSBARCOLOR_H
 #define PROGRESSBARCOLOR_H
 
-/**
- * 多彩进度条控件 作者:feiyangqingyun(QQ:517216493) 2016-10-28
- * 1:可设置精确度/步长/圆角角度
- * 2:可设置范围值和当前值
- * 3:可设置前景色背景色等各种颜色
- */
+
 
 #include <QWidget>
 

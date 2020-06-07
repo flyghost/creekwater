@@ -74,6 +74,64 @@ private slots:
 //signals:
 //    void serial_recv_char(quint8 data);//收到则发送信号，解包线程进行解析
 
+
+
+
+
+
+
+
+// # this is frame struct support by uboot
+// # ,-----+------+-----+----------+------------+- - - -+-------------,
+// # | SOF | TYPE | LEN | SUB_TYPE | HEAD_CKSUM | DATA  | DATA_CKSUM  |
+// # |  1  |   1  |  4  |    1     |      4     | ...   |     4       | <- size (bytes)
+// # '-----+------+-----+----------+------------+- - - -+-------------'
+private:
+     quint32 TRS_STUB_BLOCK = 1024;
+     quint32 TRS_CMD_BLOCK = 4096;
+    ButtonEdit *buttonEdit1;
+    ButtonEdit *buttonEdit2;
+    ButtonEdit *buttonEdit3;
+    ButtonEdit *buttonEdit4;
+
+    void FrameSerialdowninit(void);
+    void buttonEditInit();
+
+    quint8 retries;
+    QByteArray STUB_CODE;
+
+    void write(QByteArray bytes);
+    QByteArray read(qint64 length);
+    quint32 crc32(quint32 crc, const void *buf, size_t size);
+    bool command(quint8 cmd_type, quint8 cmd_subtype=0, quint8 data_content[]=nullptr, quint32 data_length=0);
+    QString get_path();
+    bool sync_bootrom();    // Perform a connection to bootrom in uart boot mode
+    bool load_stub();
+
+private slots:
+    void downloadButtonClicked();
+    void path_lineEdit1_Clicked();
+    void path_lineEdit2_Clicked();
+    void path_lineEdit3_Clicked();
+    void path_lineEdit4_Clicked();
+
+private:
+    QString TRS_ALLINONE = "oneb";
+
+private:
+    qint32 str_to_hex(QString str);
+    bool bin_handle_unpack(QString path,
+                           qint32 *type,
+                           qint32 *bin_addr,
+                           qint32 *image_length,
+                           QByteArray *image);
+    bool bin_handle_read(QString path,
+                         QString addr,
+                         qint32 *type,
+                         qint32 *bin_addr,
+                         qint32 *image_length,
+                         QByteArray *image);
+
 };
 
 

@@ -1,12 +1,7 @@
 ﻿#ifndef WAVEBAR_H
 #define WAVEBAR_H
 
-/**
- * 直方动态图控件 作者:feiyangqingyun(QQ:517216493) 2016-11-6
- * 1:可设置范围值/当前值/步长/圆角角度
- * 2:可设置顶部滑块高度
- * 3:可设置背景颜色和柱状条颜色
- */
+
 
 #include <QWidget>
 

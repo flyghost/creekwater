@@ -6,13 +6,7 @@
 #include "ui_framemain.h"
 #include "buttonedit.h"
 
-#define SOF 0xA5 //start of a frame
-#define TRS_UBOOT_ADDR   0x0000
-#define TRS_APP_ADDR     0x4000
-#define TRS_NV_ADDR      0x8000
-#define TRS_FRM_TYPE_UBOOT  0x00000001
-#define TRS_FRM_TYPE_NV     0x00000002
-#define TRS_FRM_TYPE_APP    0x00000003
+
 
 class SerialDownload: public QWidget
 {
@@ -20,8 +14,8 @@ class SerialDownload: public QWidget
 public:
     SerialDownload(QextSerialPort *m_com,Ui_FrameMain *m_ui);
 private:
-    int TRS_STUB_BLOCK = 1024;
-    int TRS_CMD_BLOCK = 4096;
+     quint32 TRS_STUB_BLOCK = 1024;
+     quint32 TRS_CMD_BLOCK = 4096;
 
     QextSerialPort *com;
     Ui_FrameMain *ui;
@@ -37,12 +31,13 @@ private:
 
     void write(QByteArray bytes);
     QByteArray read(qint64 length);
-    void send_command(unsigned char cmd_type, unsigned char cmd_subtype=0, QByteArray data_content=nullptr);
+    quint32 crc32(quint32 crc, const void *buf, size_t size);
+    bool command(quint8 cmd_type, quint8 cmd_subtype=0, quint8 data_content[]=nullptr, quint32 data_length=0);
     QString get_path();
 
-//    bool sync_bootrom();    // Perform a connection to bootrom in uart boot mode
+    bool sync_bootrom();    // Perform a connection to bootrom in uart boot mode
 //    char receive_response();
-//    bool load_stub();
+    bool load_stub();
 
 private slots:
     void downloadButtonClicked();

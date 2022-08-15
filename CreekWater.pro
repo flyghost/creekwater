@@ -19,7 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 INCLUDEPATH += $$PWD/CreekWater/code/mywidgets
-INCLUDEPATH += $$PWD/CreekWater/code/appframe
+INCLUDEPATH += $$PWD/CreekWater/code/core_app
 INCLUDEPATH += $$PWD/CreekWater/code/hardware
 INCLUDEPATH += $$PWD/CreekWater/code/model
 INCLUDEPATH += $$PWD/CreekWater/code/package
@@ -32,7 +32,7 @@ include($$PWD/CreekWater/code/framemain/framemain.pri)
 include($$PWD/CreekWater/code/framesetting/framesetting.pri)
 include($$PWD/CreekWater/code/framebackstage/framebackstage.pri)
 include($$PWD/CreekWater/code/mywidgets/mywidgets.pri)
-include($$PWD/CreekWater/code/appframe/appframe.pri)
+include($$PWD/CreekWater/code/core_app/core_app.pri)
 include($$PWD/CreekWater/code/hardware/hardware.pri)
 include($$PWD/CreekWater/code/model/model.pri)
 include($$PWD/CreekWater/code/package/package.pri)
@@ -48,9 +48,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
-win32: LIBS += -L$$PWD/CreekWater/depend/ -lhidapi
-INCLUDEPATH += $$PWD/CreekWater/depend
-DEPENDPATH += $$PWD/CreekWater/depend
+win32: LIBS += -L$$PWD/CreekWater/lib/ -lhidapi
+INCLUDEPATH += $$PWD/CreekWater/lib
+DEPENDPATH += $$PWD/CreekWater/lib
 
 RESOURCES += \
     creekwater.qrc

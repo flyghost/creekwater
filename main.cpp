@@ -2,7 +2,7 @@
 
 #include <QApplication>
 
-#include "CreekWater/code/appframe/appinit.h"
+#include "CreekWater/code/core_app/appinit.h"
 #include <QTextCodec>
 #include <QFile>
 //修改::

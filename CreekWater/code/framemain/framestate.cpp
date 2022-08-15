@@ -6,7 +6,7 @@
 #include "package_ano_422.h"
 
 
-#include "waveform.h"
+#include <waveform.h>
 
 FrameState::FrameState(Ui_FrameMain *mui, Bridge *m_bridge)
 {

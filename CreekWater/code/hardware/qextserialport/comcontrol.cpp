@@ -2,7 +2,7 @@
 #include <QDebug>
 #include "CreekWater/qextserialport/myhelper.h"
 #include "CreekWater/qextserialport/qextserialport.h"
-#include "CreekWater/code/appframe/iconhelper.h"
+#include "CreekWater/code/core_app/iconhelper.h"
 frmComTool::frmComTool(Ui::FrameMain *m_ui)
 {
     ui = m_ui;

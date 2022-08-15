@@ -4,7 +4,7 @@
 
 
 
-#include "bridge.h"
+#include <bridge.h>
 #include "frmcomtool.h"
 #include "maininterface.h"
 #include "settinginterface.h"

@@ -3323,7 +3323,7 @@
   <customwidget>
    <class>GaugePlane</class>
    <extends>QWidget</extends>
-   <header>CreekWater/code/mywidgets/gaugeplane.h</header>
+   <header>CreekWater/code/mywidgets/gaugeplane/gaugeplane.h</header>
    <container>1</container>
    <slots>
     <slot>setDegValue(int)</slot>
@@ -3333,24 +3333,24 @@
   <customwidget>
    <class>ProgressBarColor</class>
    <extends>QWidget</extends>
-   <header>CreekWater/code/mywidgets/progressbarcolor.h</header>
+   <header>CreekWater/code/mywidgets/progressbarcolor/progressbarcolor.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>ButtonGroup</class>
    <extends>QWidget</extends>
-   <header>buttongroup.h</header>
+   <header>CreekWater/code/mywidgets/buttongroup/buttongroup.h</header>
   </customwidget>
   <customwidget>
    <class>WaveForm</class>
    <extends>QWidget</extends>
-   <header>CreekWater/code/mywidgets/waveform.h</header>
+   <header>CreekWater/code/mywidgets/waveform/waveform.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>ProgressBarWater</class>
    <extends>QWidget</extends>
-   <header>CreekWater/code/mywidgets/progressbarwater.h</header>
+   <header>CreekWater/code/mywidgets/progressbarwater/progressbarwater.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

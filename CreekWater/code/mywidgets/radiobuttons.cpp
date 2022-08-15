@@ -2,6 +2,7 @@
 #include "radiobuttons.h"
 #include "qpainter.h"
 #include "qevent.h"
+#include <QPainterPath>
 
 RadioButtons::RadioButtons(QWidget *parent) : QWidget(parent)
 {

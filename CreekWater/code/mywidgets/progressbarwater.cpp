@@ -5,6 +5,7 @@
 #include "qmath.h"
 #include "qtimer.h"
 #include "qdebug.h"
+#include <QPainterPath>
 
 ProgressBarWater::ProgressBarWater(QWidget *parent) : QWidget(parent)
 {

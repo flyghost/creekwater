@@ -2,6 +2,7 @@
 #include "lightbutton.h"
 #include "qpainter.h"
 #include "qevent.h"
+#include <QPainterPath>
 
 LightButton::LightButton(QWidget *parent) : QWidget(parent)
 {

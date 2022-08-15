@@ -1,27 +1,27 @@
 HEADERS += \
 #	$$PWD/CustomButton.h \
-    $$PWD/buttonedit.h \
-	$$PWD/gaugeplane.h \
-	$$PWD/lightbutton.h \
-	$$PWD/progressbarcolor.h \
-	$$PWD/radiobuttons.h \
-        $$PWD/radiusprogressbar.h \
-        $$PWD/buttongroup.h \
-        $$PWD/clock.h \
-        $$PWD/waveform.h \
-        $$PWD/progressbarwater.h
-           
+    $$PWD/buttonedit/buttonedit.h \
+	$$PWD/gaugeplane/gaugeplane.h \
+	$$PWD/lightbutton/lightbutton.h \
+	$$PWD/progressbarcolor/progressbarcolor.h \
+	$$PWD/radiobuttons/radiobuttons.h \
+    $$PWD/radiusprogressbar/radiusprogressbar.h \
+    $$PWD/buttongroup/buttongroup.h \
+    $$PWD/clock/clock.h \
+    $$PWD/waveform/waveform.h \
+    $$PWD/progressbarwater/progressbarwater.h
+
 SOURCES +=  \
 #	$$PWD/CustomButton.cpp \
-    $$PWD/buttonedit.cpp \
-	$$PWD/gaugeplane.cpp \
-	$$PWD/lightbutton.cpp \
-	$$PWD/progressbarcolor.cpp \
-        $$PWD/radiobuttons.cpp \
-        $$PWD/radiusprogressbar.cpp \
-        $$PWD/buttongroup.cpp \
-        $$PWD/clock.cpp \
-        $$PWD/waveform.cpp \
-        $$PWD/progressbarwater.cpp
+    $$PWD/buttonedit/buttonedit.cpp \
+	$$PWD/gaugeplane/gaugeplane.cpp \
+	$$PWD/lightbutton/lightbutton.cpp \
+	$$PWD/progressbarcolor/progressbarcolor.cpp \
+    $$PWD/radiobuttons/radiobuttons.cpp \
+    $$PWD/radiusprogressbar/radiusprogressbar.cpp \
+    $$PWD/buttongroup/buttongroup.cpp \
+    $$PWD/clock/clock.cpp \
+    $$PWD/waveform/waveform.cpp \
+    $$PWD/progressbarwater/progressbarwater.cpp
 
 

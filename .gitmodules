@@ -1,0 +1,3 @@
+[submodule "widgets"]
+	path = widgets
+	url = https://github.com/flyghost/qt-widget.git
